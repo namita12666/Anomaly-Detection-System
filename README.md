@@ -4,13 +4,13 @@ An unsupervised machine learning Intrusion Detection System (IDS) designed to mo
 
 This project simulates real-time system monitoring (CPU, Memory, Disk, Network, and Processes) and uses a Sliding Window approach to filter out background noise, resulting in highly stable and accurate threat detection.
 
-## ✨ Key Features
+## Key Features
 * **Optimized 5-Feature Vector:** Extracted and mapped the most dominant numerical features from the NSL-KDD dataset to represent physical hardware load.
 * **Real-Time Sliding Window:** Utilizes a `deque` (size 10) moving average to evaluate sustained system behavior, eliminating false positives caused by transient CPU spikes.
 * **Logarithmic Data Transformation:** Applies `np.log1p` to network and process metrics to normalize massive data variance (0 to 1 Billion+), ensuring the model evaluates all dimensions equally.
 * **High-Precision Inference:** Tuned contamination thresholds (`0.1`) and expanded tree ensembles (`300 trees`) to achieve a **90% Precision Rate** on malicious anomalies.
 
-## 📊 Model Performance
+## Model Performance
 The model was trained strictly on 'Normal' traffic to establish a clean baseline and tested against 22,552 records (mixed normal and attack data).
 
 | Metric | Score | Detail |
@@ -19,16 +19,16 @@ The model was trained strictly on 'Normal' traffic to establish a clean baseline
 | **Anomaly Precision** | **0.90** | When an alert triggers, there is a 90% chance it is a verified attack. |
 | **Normal Recall** | **0.90** | The system correctly ignores 90% of safe, background system noise. |
 
-## 🗄️ Dataset Details
+## Dataset Details
 This model utilizes the **NSL-KDD** dataset. To adapt network-level data for host-based monitoring, the following feature mapping was used:
-1. `count` ➡️ **CPU Usage** (Connection intensity)
-2. `srv_count` ➡️ **Memory Usage** (Service-level load)
-3. `dst_host_count` ➡️ **Disk Usage** (Destination reach)
-4. `src_bytes` ➡️ **Network Traffic** (Data exfiltration)
-5. `dst_bytes` ➡️ **Process Count** (Payload intensity/Fork bombs)
+1. `count`  **CPU Usage** (Connection intensity)
+2. `srv_count`  **Memory Usage** (Service-level load)
+3. `dst_host_count`  **Disk Usage** (Destination reach)
+4. `src_bytes`  **Network Traffic** (Data exfiltration)
+5. `dst_bytes`  **Process Count** (Payload intensity/Fork bombs)
 
 
-### 🚀 Installation & Usage
+### Installation & Usage
 
 1. **Clone the repository**
    ```bash
@@ -46,7 +46,7 @@ This model utilizes the **NSL-KDD** dataset. To adapt network-level data for hos
 4. **Run the Real-Time Simulation**
 Execute the detection engine to see the sliding window in action.
 
-## 🎯 Simulation Scenarios
+## Simulation Scenarios
 The simulate_stream.py script includes four live-testing modes. Each attack begins with a 10-step "Healthy" lead-in to demonstrate the Sliding Window transition.
 
 normal: Standard system idle behavior.
